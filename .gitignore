@@ -1,4 +1,7 @@
 /.venv
 /.langgraph_api
 /__pycache__
-/.env
+*.env
+/uv.lock
+/src/__pycache__
+/.vscode

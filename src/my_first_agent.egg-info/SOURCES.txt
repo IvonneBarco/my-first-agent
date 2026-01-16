@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/agents/__init__.py
+src/agents/main.py
+src/api/__init__.py
+src/my_first_agent.egg-info/PKG-INFO
+src/my_first_agent.egg-info/SOURCES.txt
+src/my_first_agent.egg-info/dependency_links.txt
+src/my_first_agent.egg-info/requires.txt
+src/my_first_agent.egg-info/top_level.txt
