@@ -1,6 +1,10 @@
+import random
 from typing import TypedDict
 from langgraph.graph import MessagesState
 from langchain_core.messages import AIMessage
+from langchain.chat_models import init_chat_model
+
+llm = init_chat_model("openai:gpt-4o", temperature=0)
 
 class State(MessagesState):
     customer_name: str
@@ -11,15 +15,18 @@ customer_name = state.get("customer_name", None)
 print(f"Customer name: {customer_name}")
 
 def node_1(state: State):
+    history = state["messages"]
+    new_state = State = {}
     if state.get("customer_name") is None:
-        return {
-            "customer_name": "Alice"
-        }
+        new_state["customer_name"] = "Alice"
     else:
-        ai_msg = AIMessage(content="Hello, Message from the AI!")
-        return {
-            "messages": [ai_msg]
-        }
+        new_state["my_age"] = random.randint(20, 30)
+    
+    history = state["messages"]
+    ai_message = llm.invoke(history)
+    new_state["messages"] = [ai_message]
+    print(new_state)
+    return new_state
 
 from langgraph.graph import StateGraph, START, END
 
