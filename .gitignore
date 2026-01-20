@@ -6,3 +6,7 @@
 /src/__pycache__
 /.vscode
 /src/agents/__pycache__
+/src/agents/support/nodes/extractor/__pycache__
+/src/agents/support/nodes/__pycache__
+/src/agents/support/__pycache__
+/src/agents/support/nodes/conversation/__pycache__
