@@ -1,18 +1,14 @@
-from langchain.agents import create_agent
+# Implementación pendiente del agente booking
+from langgraph.graph import StateGraph, START, END
+from langgraph.graph import MessagesState
 
-from agents.support.nodes.booking.tools import tools
-from agents.support.nodes.booking.prompt import prompt_template
+def placeholder_node(state: MessagesState):
+    """Nodo temporal mientras se implementa el agente booking"""
+    return {"messages": []}
 
-system_prompt = """
-Eres un asistente de ventas que ayuda a los clientes a encontrar productos adecuados según sus necesidades y dar el clima de la ciudad
+builder = StateGraph(MessagesState)
+builder.add_node("placeholder", placeholder_node)
+builder.add_edge(START, "placeholder")
+builder.add_edge("placeholder", END)
 
-Tus tools son:
-- get_products: para obtener los productos que ofreces en la tienda.
-- get_weather: para obtener el clima actual de una ciudad dada.
-"""
-
-booking_node = create_agent(
-    model="openai:gpt-4o-mini",
-    tools=tools,
-    system_prompt=system_prompt,
-)
+booking_node = builder.compile()
